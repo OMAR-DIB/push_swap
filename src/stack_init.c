@@ -6,7 +6,7 @@
 /*   By: odib <odib@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:08:42 by odib              #+#    #+#             */
-/*   Updated: 2024/07/11 12:38:45 by odib             ###   ########.fr       */
+/*   Updated: 2024/07/13 16:22:58 by odib             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ long	ft_atol(const char *s)
 
 	result = 0;
 	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-			*s == '\r' || *s == '\f' || *s == '\v')
+	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r' || *s == '\f'
+		|| *s == '\v')
 		s++;
 	if (*s == '-' || *s == '+')
 	{
@@ -71,9 +71,39 @@ void	init_stack_a(t_stack_node **a, char **av)
 		value = ft_atol(av[i]);
 		if (value > INT_MAX || value < INT_MIN)
 			free_on_errors(a);
-		if (is_duplicate(*a, value))
+		if (is_duplicate(*a, (int)value))
 			free_on_errors(a);
 		append_node(a, (int)value);
 		i++;
 	}
+}
+
+void	move_to_top(t_stack_node **list, t_stack_node *top, char name)
+{
+	while ((*list) != top)
+	{
+		if (name == 'a')
+		{
+			if (top->above_median)
+				ra(list, true);
+			else
+				rra(list, true);
+		}
+		else if (name == 'b')
+		{
+			if (top->above_median)
+				rb(list, true);
+			else
+				rrb(list, true);
+		}
+	}
+}
+
+void	init_nodes_a(t_stack_node *a, t_stack_node *b)
+{
+	curr_index(a);
+	curr_index(b);
+	set_target_a(a, b);
+	cost_of_a(a, b);
+	set_cheapest(a);
 }

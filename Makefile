@@ -1,8 +1,8 @@
-NAME = pushswap
+NAME = push_swap
 
 SRC_DIR				= src/
 
-SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)stack_init.c $(SRC_DIR)utils.c $(SRC_DIR)errors.c $(SRC_DIR)rotate.c $(SRC_DIR)swap.c
+SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)stack_init.c $(SRC_DIR)utils.c $(SRC_DIR)errors.c $(SRC_DIR)rotate.c $(SRC_DIR)swap.c $(SRC_DIR)init_b.c $(SRC_DIR)init_utils.c $(SRC_DIR)push.c $(SRC_DIR)sort.c $(SRC_DIR)rev_rotate.c
 OBJ := $(SRC:%.c=%.o)
 
 CC = gcc

@@ -6,7 +6,7 @@
 /*   By: odib <odib@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:12:44 by odib              #+#    #+#             */
-/*   Updated: 2024/07/11 17:03:34 by odib             ###   ########.fr       */
+/*   Updated: 2024/07/13 16:35:31 by odib             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ t_stack_node	*find_last_node(t_stack_node *a)
 {
 	if (!a)
 		return (NULL);
-	while (a -> next)
+	while (a->next)
 	{
 		a = a->next;
 	}
 	return (a);
 }
 
-int	is_sorted(t_stack_node	*list)
+bool	is_sorted(t_stack_node	*list)
 {
 	if (!list)
-		return (0);
+		return (1);
 	while (list->next)
 	{
 		if (list->nbr > list->next->nbr)
-			return (0);
+			return (false);
 		list = list->next;
 	}
-	return (1);
+	return (true);
 }
 
 t_stack_node	*find_min(t_stack_node	*list)
@@ -63,7 +63,7 @@ t_stack_node	*find_max(t_stack_node *list)
 
 	if (!list)
 		return (NULL);
-	max = 0;
+	max = LONG_MIN;
 	while (list)
 	{
 		if (list->nbr > max)
