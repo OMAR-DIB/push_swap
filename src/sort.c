@@ -35,12 +35,9 @@ void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 
 void	min_on_top(t_stack_node **a)
 {
-	t_stack_node	*min;
-
-	min = find_min(*a);
-	while ((*a)->nbr != min->nbr)
+	while ((*a)->nbr != find_min(*a)->nbr) 
 	{
-		if (min->above_median)
+		if (find_min(*a)->above_median) 
 			ra(a, true);
 		else
 			rra(a, true);
@@ -56,11 +53,11 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		pb(b, a, true);
 	if (len_a-- > 3 && !is_sorted(*a))
 		pb(b, a, true);
-	while (len_a > 3 && !is_sorted(*a))
+	while (len_a-- > 3 && !is_sorted(*a))
 	{
 		init_nodes_a(*a, *b);
 		move_a_to_b(a, b);
-		len_a--;
+		//len_a--;
 	}
 	trio_sort(a);
 	while (*b)

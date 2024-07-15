@@ -16,7 +16,7 @@ void	rev_rotate(t_stack_node **list)
 {
 	t_stack_node	*last;
 
-	if (!*list)
+	if (!*list || !(*list)->next)
 		return ;
 	last = find_last_node(*list);
 	last->prev->next = NULL;

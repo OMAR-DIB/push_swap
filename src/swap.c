@@ -30,7 +30,7 @@ void	trio_sort(t_stack_node **list)
 	t_stack_node	*temp;
 
 	temp = find_max(*list);
-	if (*list == temp)
+	if (temp == *list)
 		ra(list, true);
 	else if ((*list)->next == temp)
 		rra(list, true);
@@ -41,7 +41,7 @@ void	trio_sort(t_stack_node **list)
 void	sa(t_stack_node **a, bool print)
 {
 	swap(a);
-	if (!print)
+	if (print)
 		ft_printf("sa\n");
 }
 

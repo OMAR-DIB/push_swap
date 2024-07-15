@@ -80,7 +80,7 @@ void	init_stack_a(t_stack_node **a, char **av)
 
 void	move_to_top(t_stack_node **list, t_stack_node *top, char name)
 {
-	while ((*list) != top)
+	while (*list != top)
 	{
 		if (name == 'a')
 		{

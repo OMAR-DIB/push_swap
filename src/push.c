@@ -12,27 +12,27 @@
 
 #include "../pushswap.h"
 
-void	push(t_stack_node **a, t_stack_node **b)
+void	push(t_stack_node **dst, t_stack_node **src) //Define a function that pushes a top node, from one stack to another's top node
 {
-	t_stack_node	*temp;
-
-	if (!(*b))
+	t_stack_node	*push_node; 
+	
+	if (!*src)
 		return ;
-	temp = *b;
-	*b = (*b)->next;
-	if (*b)
-		(*b)->prev = NULL;
-	temp->prev = NULL;
-	if (!*a)
+	push_node = *src; 
+	*src = (*src)->next; 
+	if (*src) 
+		(*src)->prev = NULL; 
+	push_node->prev = NULL; 
+	if (!*dst) 
 	{
-		*a = temp;
-		temp->next = NULL;
+		*dst = push_node;
+		push_node->next = NULL;
 	}
-	else
+	else 
 	{
-		temp->next = *a;
-		temp->next->prev = temp;
-		*a = temp;
+		push_node->next = *dst;
+		push_node->next->prev = push_node;
+		*dst = push_node;
 	}
 }
 
